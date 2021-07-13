@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.jhs.exam.exam2.http.Rq" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:set var="pageTitle" value="게시물 리스트" />
@@ -92,13 +91,9 @@
 				</c:forEach>
 				
 					<div class="page-menu">
-					<%
-					Rq rq = (Rq)request.getAttribute("rq");
-					int totalPage = rq.getIntAttr("totalPage", 10);
-					%>
-					<% for ( int i = 1; i <= totalPage; i++ ) { %>
-					<a href="?page=<%=i%>"><%=i%></a>
-					<% } %>
+					<c:forEach var="i" begin="1" end="${rq.getIntAttr('totalPage', 10)}" step="1">
+						${i}
+					</c:forEach>
 				</div>
 			</div>
 		</div>
