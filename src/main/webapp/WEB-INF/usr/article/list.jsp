@@ -77,17 +77,31 @@
 						<hr />
 				</c:forEach>
 
-				<div class="page-menu">
+				<div class="page-menu mt-4 mb-4 text-center">
 					<c:set var="pageMenuArmSize" value="4" />
+					<c:set var="pre" value="${page -1}" />
+					<c:set var="next" value="${page +1}" />	
+					
+					<a href="?page=1">[처음]</a>
+					<c:if test="${page > 1}">
+					<a href="?page=${pre}">◀</a>
+					</c:if>	
+					
 					<c:set var="startPage"
 						value="${page - pageMenuArmSize >= 1  ? page - pageMenuArmSize : 1}" />
 					<c:set var="endPage"
 						value="${page + pageMenuArmSize <= totalPage ? page + pageMenuArmSize : totalPage}" />
 					<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
 						<c:set var="aClassStr"
-							value="${i == param.page ? 'text-red-500 font-bold' : ''}" />
+							value="${i == page ? 'text-red-500 underline font-bold' : ''}" />
 						<a class="${aClassStr}" href="?page=${i}">${i}</a>
 					</c:forEach>
+					
+					<c:if test="${page < totalPage}">
+					<a href="?page=${next}">▶</a>
+					</c:if>
+				    <a href="?page=${totalPage}">[끝]</a>
+					
 				</div>
 			</div>
 		</div>
