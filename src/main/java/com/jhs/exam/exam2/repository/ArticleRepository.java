@@ -12,19 +12,18 @@ public class ArticleRepository {
 		sql.append("INSERT INTO article");
 		sql.append("SET regDate = NOW()");
 		sql.append(", updateDate = NOW()");
-		sql.append(", `boardId` = ?", boardId);
-		sql.append(", `memberId` = ?", memberId);
+		sql.append(", boardId = ?", boardId);
+		sql.append(", memberId = ?", memberId);
 		sql.append(", title = ?", title);
 		sql.append(", `body` = ?", body);
-		
-		
+
 		int id = MysqlUtil.insert(sql);
-		
+
 		return id;
 	}
 
-	public List<Article> getForPrintArticles(String searchKeywordTypeCode, String searchKeyword, int limitFrom,
-			int limitTake) {
+	public List<Article> getForPrintArticles(int boardId, String searchKeywordTypeCode, String searchKeyword,
+			int limitFrom, int limitTake) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT A.*");
 		sql.append(", IFNULL(M.nickname, '삭제된회원') AS extra__writerName");
@@ -44,9 +43,14 @@ public class ArticleRepository {
 				break;
 			}
 		}
+
+		if (boardId != 0) {
+			sql.append("AND A.boardId = ?", boardId);
+		}
+
 		sql.append("ORDER BY A.id DESC");
 		sql.append("LIMIT ?, ?", limitFrom, limitTake);
-		
+
 		return MysqlUtil.selectRows(sql, Article.class);
 	}
 
@@ -55,7 +59,7 @@ public class ArticleRepository {
 		sql.append("SELECT A.*");
 		sql.append("FROM article AS A");
 		sql.append("WHERE id = ?", id);
-		
+
 		return MysqlUtil.selectRow(sql, Article.class);
 	}
 
@@ -63,7 +67,7 @@ public class ArticleRepository {
 		SecSql sql = new SecSql();
 		sql.append("DELETE FROM article");
 		sql.append("WHERE id = ?", id);
-		
+
 		return MysqlUtil.delete(sql);
 	}
 
@@ -71,21 +75,21 @@ public class ArticleRepository {
 		SecSql sql = new SecSql();
 		sql.append("UPDATE article");
 		sql.append("SET updateDate = NOW()");
-		
-		if ( title != null ) {
+
+		if (title != null) {
 			sql.append(", title = ?", title);
 		}
-		
-		if ( body != null ) {
+
+		if (body != null) {
 			sql.append(", body = ?", body);
 		}
-		
+
 		sql.append("WHERE id = ?", id);
-		
+
 		return MysqlUtil.update(sql);
 	}
-	
-	public int getArticlesCount(String searchKeywordTypeCode, String searchKeyword) {
+
+	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT COUNT(*) AS cnt");
 		sql.append("FROM article AS A");
@@ -101,6 +105,10 @@ public class ArticleRepository {
 				sql.append("AND A.title LIKE CONCAT('%', ?, '%')", searchKeyword);
 				break;
 			}
+		}
+
+		if (boardId != 0) {
+			sql.append("AND A.boardId = ?", boardId);
 		}
 
 		return MysqlUtil.selectRowIntValue(sql);
