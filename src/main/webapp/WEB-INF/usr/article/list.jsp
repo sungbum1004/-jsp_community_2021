@@ -16,8 +16,50 @@
 			</div>
 
 			<div class="px-4 py-4">
-				<div class="badge badge-primary">전체게시물 개수</div>
+				<div class="badge badge-primary">
+					<c:if test="${param.searchKeyword == null}">
+						전체게시물 개수
+					</c:if>
+					<c:if test="${param.searchKeyword != null}">
+						검색어 `${param.searchKeyword}`, 게시물 개수
+					</c:if>
+				</div>
 				${totalItemsCount}
+			</div>
+
+			<hr />
+
+			<div class="px-4 py-4">
+				<div class="badge badge-primary">검색</div>
+				<form action="">
+					<input type="hidden" name="boardId" value="${boardId}" />
+					<div class="form-control">
+						<label class="label"> <span class="label-text">검색타입</span>
+						</label>
+						<div>
+							<select name="searchKeywordTypeCode"
+								class="select select-bordered w-full max-w-md">
+								<option value="title,body">제목,내용</option>
+								<option value="title">제목</option>
+								<option value="title">내용</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-control">
+						<label class="label"> <span class="label-text">검색어</span>
+						</label>
+						<div>
+							<input class="input input-bordered w-full max-w-md"
+								maxlength="100" name="searchKeyword" type="text"
+								placeholder="검색어를 입력해주세요." value="${param.searchKeyword}" />
+						</div>
+					</div>
+
+					<div class="btns py-2">
+						<input type="submit" class="btn btn-sm btn-primary" value="검색" />
+					</div>
+				</form>
 			</div>
 
 			<hr />
@@ -80,7 +122,7 @@
 
 				<div class="page-menu">
 					<c:set var="baseUri" value="?boardId=${boardId}" />
-					
+
 					<c:set var="pageMenuArmSize" value="7" />
 					<c:set var="startPage"
 						value="${page - pageMenuArmSize >= 1 ? page - pageMenuArmSize : 1}" />
