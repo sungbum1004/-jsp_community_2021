@@ -95,12 +95,14 @@ public class UsrArticleController extends Controller {
 		
 		int itemsCountInAPage = 10; 
 		int page = rq.getIntParam("page", 1);
+		int boardId = rq.getIntParam("boardId", 0);
 		
 		int totalItemsCount = articleService.getArticlesCount(searchKeywordTypeCode, searchKeyword);
 		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMember(), searchKeywordTypeCode, searchKeyword, itemsCountInAPage, page);
 
 		int totalPage = (int)Math.ceil((double)totalItemsCount / itemsCountInAPage);
 		
+		rq.setAttr("boardId", boardId);
 		rq.setAttr("page", page);
 		rq.setAttr("totalPage", totalPage);
 		rq.setAttr("totalItemsCount", totalItemsCount);
