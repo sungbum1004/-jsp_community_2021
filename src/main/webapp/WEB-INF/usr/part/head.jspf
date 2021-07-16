@@ -34,7 +34,7 @@
 
 	<header class="top-bar h-20 font-bold">
 		<div class="h-full container mx-auto flex">
-			<a href="/"
+			<a href="../article/list"
 				class="top-bar__logo flex items-center px-4 hover:underline hover:text-red-500">
 				<span>
 					<i class="far fa-lemon"></i>
