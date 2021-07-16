@@ -41,7 +41,7 @@
 								class="select select-bordered w-full max-w-md">
 								<option value="title,body">제목,내용</option>
 								<option value="title">제목</option>
-								<option value="body">내용</option>
+								<option value="body" selected>내용</option>
 							</select>
 						</div>
 					</div>
