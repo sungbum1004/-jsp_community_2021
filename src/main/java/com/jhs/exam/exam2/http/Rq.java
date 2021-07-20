@@ -30,19 +30,19 @@ public class Rq {
 	private String controllerName;
 	@Getter
 	private String actionMethodName;
-	
+
 	@Getter
 	@Setter
 	private boolean isLogined = false;
-	
+
 	@Getter
 	@Setter
 	private int loginedMemberId = 0;
-	
+
 	@Getter
 	@Setter
 	private Member loginedMember = null;
-	
+
 	public boolean isNotLogined() {
 		return isLogined == false;
 	}
@@ -107,7 +107,7 @@ public class Rq {
 	public String getParam(String paramName, String defaultValue) {
 		String paramValue = req.getParameter(paramName);
 
-		if (paramValue == null) {
+		if (paramValue == null || paramValue.trim().length() == 0) {
 			return defaultValue;
 		}
 
@@ -177,9 +177,9 @@ public class Rq {
 	public String getActionPath() {
 		return "/" + controllerTypeName + "/" + controllerName + "/" + actionMethodName;
 	}
-	
+
 	public String getStringAttr(String attrName, String defaultValue) {
-		String attrValue = (String)req.getAttribute(attrName);
+		String attrValue = (String) req.getAttribute(attrName);
 
 		if (attrValue == null) {
 			return defaultValue;
@@ -189,7 +189,7 @@ public class Rq {
 	}
 
 	public int getIntAttr(String attrName, int defaultValue) {
-		Integer attrValue = (Integer)req.getAttribute(attrName);
+		Integer attrValue = (Integer) req.getAttribute(attrName);
 
 		if (attrValue == null) {
 			return defaultValue;
@@ -197,7 +197,7 @@ public class Rq {
 
 		return attrValue;
 	}
-	
+
 	private Map<String, Object> getParamMap() {
 		Map<String, Object> params = new HashMap<>();
 
@@ -216,47 +216,60 @@ public class Rq {
 	public String getParamMapJsonStr() {
 		return Ut.toJson(getParamMap(), "");
 	}
-	
+
 	private Map<String, Object> getBaseTypeAttrMap() {
 		Map<String, Object> attrs = new HashMap<>();
-		
+
 		Enumeration<String> attrNames = req.getAttributeNames();
-		
+
 		while (attrNames.hasMoreElements()) {
 			String attrName = attrNames.nextElement();
 			Object attrvalue = req.getAttribute(attrName);
-			
-			if ( attrName.equals("rq") ) {
+
+			if (attrName.equals("rq")) {
 				continue;
 			}
-			
-			if ( Ut.isBaseType(attrvalue) == false ) {
+
+			if (Ut.isBaseType(attrvalue) == false) {
 				continue;
 			}
-			
+
 			attrs.put(attrName, attrvalue);
 		}
-		
+
 		return attrs;
 	}
-	
+
 	public String getBaseTypeAttrMapJsonStr() {
 		return Ut.toJson(getBaseTypeAttrMap(), "");
 	}
-	
+
 	public String getCurrentUri() {
 		String uri = req.getRequestURI();
 		String queryStr = req.getQueryString();
-		
-		if ( queryStr != null && queryStr.length() > 0 ) {
+
+		if (queryStr != null && queryStr.length() > 0) {
 			uri += "?" + queryStr;
 		}
-		
+
 		return uri;
 	}
-	
+
 	public String getEncodedCurrentUri() {
 		return Ut.getUriEncoded(getCurrentUri());
 	}
 	
+	public String getEncodedAfterLoginUri() {
+		return Ut.getUriEncoded(getAfterLoginUri());
+	}
+
+	public String getAfterLoginUri() {
+		String afterLoginUri = getParam("afterLoginUri", "");
+
+		if (afterLoginUri.length() > 0) {
+			return afterLoginUri;
+		}
+
+		return getCurrentUri();
+	}
 }
