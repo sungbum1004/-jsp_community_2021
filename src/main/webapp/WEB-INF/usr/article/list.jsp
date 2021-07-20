@@ -17,21 +17,25 @@
 
 			<div class="px-4 py-4">
 				<c:if
-					test="${param.searchKeyword != null && param.searchKeyword != ''}">
+					test="${param.searchKeyWord != null && param.searchKeyword != ''}">
 					<div class="badge badge-primary">검색어 타입</div>
 					<span>${param.searchKeywordTypeCode}</span>
-
 					<br />
-
-					<div class="badge badge-primary">검색어</div>
+					<div class="badge badge-primary">검색어 타입</div>
 					<span>${param.searchKeyword}</span>
 
 					<br />
 				</c:if>
 				<div class="badge badge-primary">전체게시물 개수</div>
-				<span> ${totalItemsCount}</span>
+				<span> ${totalItemsCount} </span>
 			</div>
+			
+				<hr />
 
+			<div class="btns px-4 py-4">
+				<a class="btn btn-link" href="../article/write?boardId=${boardId}">글쓰기</a>
+			</div>
+			
 			<hr />
 
 			<div class="px-4 py-4">
@@ -68,7 +72,7 @@
 					</div>
 
 					<div class="btns py-2">
-						<input type="submit" class="btn btn-sm btn-primary" value="검색" />
+						<input type="submit" class="btn btn-link" value="검색" />
 					</div>
 				</form>
 			</div>
@@ -136,7 +140,7 @@
 					<c:set var="baseUri"
 						value="${baseUri}&searchKeywordTypeCode=${param.searchKeywordTypeCode}" />
 					<c:set var="baseUri"
-						value="${baseUri}&searchKeyword=${param.searchKeyword}" />
+						value="${baseUri}&searchkeyword=${param.searchKeyword}" />
 
 					<c:set var="pageMenuArmSize" value="7" />
 					<c:set var="startPage"
