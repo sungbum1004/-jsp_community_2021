@@ -42,7 +42,7 @@ const rqParams = ${rq.paramMapJsonStr};
 
 	<header class="top-bar h-20 font-bold">
 		<div class="h-full container mx-auto flex">
-			<a href="../article/list"
+			<a href="../../"
 				class="top-bar__logo flex items-center px-4 hover:underline hover:text-red-500">
 				<span>
 					<i class="far fa-lemon"></i>
@@ -56,7 +56,7 @@ const rqParams = ${rq.paramMapJsonStr};
 			<nav class="top-bar__menu-box-1">
 				<ul class="flex h-full">
 					<li>
-						<a href="../article/list"
+						<a href="#"
 							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
 							<span>
 								<i class="fas fa-home"></i>
