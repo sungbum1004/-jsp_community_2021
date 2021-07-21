@@ -4,18 +4,18 @@
 <c:set var="pageTitle" value="홈" />
 <%@ include file="../part/head.jspf"%>
 
-<section class="section section-home-main px-4">
-	<div class="container mx-auto">
+<section class="section section-home-main">
+	<div class="container mx-auto card-wrap">
 
 		<div class="card bordered shadow-lg">
 			<div class="card-title">
-				<a href="javascript:history.back();" class="cursor-pointer">
-					<i class="fas fa-chevron-left"></i>
+				<a>
+					<i class="fas fa-home"></i>
 				</a>
 				<span>홈</span>
 			</div>
 
-			<div>
+			<div class="px-4 py-4">
 				<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae repellendus laudantium rem molestiae cum voluptatum natus adipisci illo sapiente incidunt! Velit nihil quibusdam ullam quo rem corporis odit ratione laudantium.</div>
 				<div>Vel debitis quis sit mollitia sed assumenda cupiditate. Itaque ab ex voluptatum possimus placeat explicabo veniam nemo iure. Eos dolor sequi praesentium doloremque laboriosam quam vitae quod veniam quidem dolores.</div>
 				<div>Architecto facilis ad hic molestias odit laborum consectetur asperiores quas facere dolorem quia repudiandae amet porro mollitia quae recusandae dicta consequatur dolorum animi commodi ut. Quod corporis optio atque iure!</div>
