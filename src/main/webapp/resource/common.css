@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 /* 라이브러리 */
 .line-clamp-3 {
   overflow: hidden;
@@ -80,6 +79,10 @@ body {
 
 /* 모바일 사이드바 시작 */
 .mobile-side-bar {
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   transform:translateY(-100%);
   transition: transform 0.3s;
 }
@@ -87,4 +90,4 @@ body {
 .mobile-side-bar.active {
   transform:translateY(0);
 }
-/* 모바일 사이드바 끝 */ 
+/* 모바일 사이드바 끝 */
