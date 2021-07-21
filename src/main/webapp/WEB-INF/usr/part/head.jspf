@@ -93,12 +93,14 @@ const rqParams = ${rq.paramMapJsonStr};
 							<li><a href="../member/doLogout"
 								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
 									<span> <i class="fas fa-sign-out-alt"></i>
-								</span> &nbsp; <span>LOGOUT</span>
+								</span> 
+								<span class="hidden sm:block">&nbsp;LOGOUT</span>
 							</a></li>
 							<li><a href="#"
 								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
 									<span> <i class="fas fa-user"></i>
-								</span> <span>MY PAGE</span>
+								</span> 
+								<span class="hidden sm:block">&nbsp;MY PAGE</span>
 							</a></li>
 						</c:if>
 					</ul>
