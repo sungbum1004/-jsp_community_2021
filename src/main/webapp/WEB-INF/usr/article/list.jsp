@@ -38,43 +38,6 @@
 			
 			<hr />
 
-			<div class="px-4 py-4">
-				<div class="badge badge-primary">검색</div>
-				<form action="">
-					<input type="hidden" name="boardId" value="${boardId}" />
-					<div class="form-control">
-						<label class="label"> <span class="label-text">검색타입</span>
-						</label>
-						<div>
-							<select name="searchKeywordTypeCode" class="select select-bordered w-full max-w-md">
-								<option value="title,body">제목,내용</option>
-								<option value="title">제목</option>
-								<option value="body">내용</option>
-							</select>
-							<script>
-								$('.section-article-write select[name="searchKeywordTypeCode"]').val(rqBaseTypeAttrMapJsonStr.searchKeywordTypeCode);
-							</script>
-						</div>
-					</div>
-
-					<div class="form-control">
-						<label class="label"> <span class="label-text">검색어</span>
-						</label>
-						<div>
-							<input class="input input-bordered w-full max-w-md"
-								maxlength="100" name="searchKeyword" type="text"
-								placeholder="검색어를 입력해주세요." value="${param.searchKeyword}" />
-						</div>
-					</div>
-
-					<div class="btns py-2">
-						<input type="submit" class="btn btn-link" value="검색" />
-					</div>
-				</form>
-			</div>
-
-			<hr />
-
 			<div class="px-4">
 				<c:forEach items="${articles}" var="article">
 					<c:set var="detailUri" value="../article/detail?id=${article.id}" />
