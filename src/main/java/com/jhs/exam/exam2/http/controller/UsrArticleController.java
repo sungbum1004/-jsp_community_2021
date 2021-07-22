@@ -125,6 +125,11 @@ public class UsrArticleController extends Controller {
 		String body = rq.getParam("body", "");
 		String redirectUri = rq.getParam("redirectUri", "../article/list");
 
+		if (boardId == 0) {
+			rq.historyBack("boardId를 입력해주세요.");
+			return;
+		}
+		
 		if (title.length() == 0) {
 			rq.historyBack("title을 입력해주세요.");
 			return;

@@ -23,40 +23,43 @@
 						if (ArticleWrite__submitDone) {
 							return;
 						}
-
+						
+						if ( form.boardId.value == 0 ) {
+							alert('게시판을 선택해주세요.');
+							form.boardId.focus();
+							return;
+						}
 						if (form.title.value.length == 0) {
 							alert('제목을 입력해주세요.');
 							form.title.focus();
-
 							return;
 						}
-
 						if (form.body.value.length == 0) {
 							alert('내용을 입력해주세요.');
 							form.body.focus();
-
 							return;
 						}
-						
-						if (form.boardId.value.length == 0) {
-							alert('게시판을 선택해주세요.');
-							form.boardId.focus();
-
-							return;
-						}
-
 						form.submit();
 						ArticleWrite__submitDone = true;
 					}
 				</script>
 				<form action="../article/doWrite" method="POST"
 					onsubmit="ArticleWrite__submit(this); return false;">
-					<input type="hidden" name="redirectUri" value="../article/detail?id=[NEW_ID]" />
-						<select name="boardId" class="select select-bordered w-full max-w-md">
-			          <option value="0">--게시판을 선택해주세요--</option>
-			          <option value="1">공지사항</option>
-			          <option value="2">자유 게시판</option>
-			        </select><br>
+					<input type="hidden" name="redirectUri"
+						value="../article/detail?id=[NEW_ID]" />
+					<div class="form-control">
+						<label class="label">
+							<span class="label-text">게시판</span>
+						</label>
+						<div>
+							<select class="select select-bordered w-full max-w-md" name="boardId">
+								<option value="0" selected disabled>- 게시판 선택 -</option>
+								<option value="1">공지사항</option>
+								<option value="2">자유게시판</option>
+							</select>
+						</div>
+					</div>
+						
 					<div class="form-control">
 						<label class="label">
 							<span class="label-text">제목</span>
