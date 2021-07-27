@@ -138,7 +138,7 @@
 							<input class="input input-bordered w-full" maxlength="100" name="loginPw" type="password" placeholder="로그인비밀번호를 입력해주세요." />
 						</div>
 					</div>
-
+					
 					<div class="form-control">
 						<label class="label">
 							<span class="label-text">로그인비밀번호 확인</span>

@@ -22,4 +22,16 @@ public class MemberService {
 		return ResultData.from("S-1", "환영합니다.", "member", member);
 	}
 
+	public ResultData join(String loginId, String loginPw, String loginPwConfirm, String name, String nickname, String email,
+			String cellphoneNo) {
+		Member member = memberRepository.getMemberByLoginId(loginId);
+		
+		if( member != null) {
+			return ResultData.from("F-1", "중복된 로그인아이디 입니다.");
+		}
+		
+		memberRepository.join(loginId, loginPw, loginPwConfirm, name, nickname, email, cellphoneNo);
+		return ResultData.from("S-1", "환영합니다.");
+	}
+
 }

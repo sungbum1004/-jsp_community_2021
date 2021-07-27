@@ -14,6 +14,9 @@ public class BeforeActionInterceptor extends Interceptor {
 			rq.setLogined(true);
 			rq.setLoginedMember(Ut.toObjFromJson(loginedMemberJson, Member.class));
 			rq.setLoginedMemberId(rq.getLoginedMember().getId());
+			if(rq.getLoginedMember() != null) {
+
+			}
 		}
 		
 		rq.setAttr("rq", rq);

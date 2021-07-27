@@ -110,6 +110,9 @@ ADD COLUMN likeCount INT(10) UNSIGNED NOT NULL DEFAULT 0 AFTER `body`;
 ALTER TABLE article
 ADD COLUMN dislikeCount INT(10) UNSIGNED NOT NULL DEFAULT 0 AFTER `body`;
 
+ALTER TABLE `member`
+ADD COLUMN loginPwConfirm CHAR(100) NOT NULL DEFAULT 0 AFTER loginPw;
+
 # 기존 게시물을 2번 회원이 쓴 자유게시물로 지정
 UPDATE article
 SET memberId = 2,
