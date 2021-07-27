@@ -28,10 +28,18 @@ public class UsrMemberController extends Controller {
 		case "doJoin":
 			actionDoJoin(rq);
 			break;
+		case "loginIdCheck":
+			actionDoLoginIdCheck(rq);
+			break;
 		default:
 			rq.println("존재하지 않는 페이지 입니다.");
 			break;
 		}
+	}
+
+	private void actionDoLoginIdCheck(Rq rq) {
+		String loginId = rq.getParam("loginId", "");
+		rq.write(memberService.getMemberByLoginId(loginId) + "");
 	}
 
 	private void actionDoJoin(Rq rq) {
@@ -82,6 +90,7 @@ public class UsrMemberController extends Controller {
 
 		if(joinRd.isFail()) {
 			rq.historyBack(joinRd.getMsg());
+			return;
 		}
 
 		String redirectUri = "../member/login";

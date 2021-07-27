@@ -88,6 +88,48 @@
 						MemberJoin__submitDone = true;
 					}
 				</script>
+				
+				<script>
+					$(document).ready(function() {
+						$("#join-submit").click(function(){
+							var loginIdChecked = $("#join-submit").val();	
+							if(loginIdChecked == 0){
+								alert("아이디 중복 확인을 해주세요.");
+								return false;
+							}
+						});
+						$('#checkbtn').click(function(){
+							var loginId = $('#loginId').val();
+							$("#join-submit").val(1);
+							$.ajax({
+								type: 'POST',
+								url: './loginIdCheck',
+								data: {loginId:loginId},
+								success: function(result){
+									if(result != 'null'){
+										$("#checkMsg").html('사용할 수 없는 아이디입니다.');
+										$("#checkMsg").css("color", "red");
+										$("#join-submit").attr("disabled", true);
+									}
+									else{
+										if(loginId.length == 0){
+											$("#checkMsg").html('아이디를 입력해주세요.');
+											$("#checkMsg").css("color", "red");
+											$("#join-submit").attr("disabled", true);			
+										}
+										else{
+											console.log(loginId.length)
+											$("#checkMsg").html('사용할 수 있는 아이디입니다.');
+											$("#checkMsg").css("color", "green");
+											$("#join-submit").attr("disabled", false);
+										}
+									}
+								}
+							});
+						});
+					});
+				</script>
+								
 				<form action="../member/doJoin" method="POST" onsubmit="MemberJoin__submit(this); return false;">
 					<input type="hidden" name="redirectUri" value="${param.afterLoginUri}" />
 
@@ -125,9 +167,15 @@
 						<label class="label">
 							<span class="label-text">로그인아이디</span>
 						</label>
-						<div>
-							<input class="input input-bordered w-full" maxlength="100" name="loginId" type="text" placeholder="로그인아이디를 입력해주세요." />
+						<div class="flex">
+							<div class="flex-grow">
+								<input class="input input-bordered w-full" maxlength="100" id="loginId" name="loginId" type="text"
+									placeholder="로그인아이디를 입력해주세요." />
+							</div>
+							<button type="button" id="checkbtn" class="btn btn-link ml-2">중복확인</button>
 						</div>
+						<div id="checkMsg"></div>
+						
 					</div>
 
 					<div class="form-control">
@@ -185,7 +233,7 @@
 					</div>
 
 					<div class="btns">
-						<button type="submit" class="btn btn-link">회원가입</button>
+						<button id="join-submit" type="submit" class="btn btn-link" value="0">회원가입</button>
 					</div>
 				</form>
 			</div>

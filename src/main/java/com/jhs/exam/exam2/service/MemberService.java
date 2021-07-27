@@ -34,4 +34,8 @@ public class MemberService {
 		return ResultData.from("S-1", "환영합니다.");
 	}
 
+	public Member getMemberByLoginId(String loginId) {
+		return memberRepository.getMemberByLoginId(loginId);
+	}
+
 }

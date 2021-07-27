@@ -272,4 +272,12 @@ public class Rq {
 
 		return getCurrentUri();
 	}
+
+	public void write(String str) {
+		try {
+			resp.getWriter().write(str);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
