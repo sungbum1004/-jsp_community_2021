@@ -73,7 +73,7 @@ body {
     padding-right:0;
   }
   
-    main > section:first-of-type > .card-wrap {
+  main > section:first-of-type > .card-wrap {
   	margin-top:-15px;
   }
 
@@ -128,6 +128,7 @@ body {
   align-items:center;
   justify-content:center;
   z-index:100;
+  transition: visibility 0.2s, opacity 0.2s;
 }
 
 .search-bar.active {
@@ -136,11 +137,12 @@ body {
 }
 
 .search-bar > form {
-  min-width:320px;
+  width:100%;
+  max-width:600px;
   background-color:white;
   padding:20px;
   border-radius:10px;
   border:2px solid black;
 }
 
-/* 검색바 끝 */ 
+/* 검색바 끝 */
