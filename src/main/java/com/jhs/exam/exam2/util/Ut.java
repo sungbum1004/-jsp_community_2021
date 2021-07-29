@@ -18,6 +18,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -96,6 +97,19 @@ public class Ut {
 			return defaultValue;
 		}
 	}
+	
+	public static String toPrettyJson(Object obj, String defaultValue) {
+		ObjectMapper om = new ObjectMapper();
+		om.configure(JsonGenerator.Feature.QUOTE_FIELD_NAMES, false);
+		
+		try {
+			return om
+					.writerWithDefaultPrettyPrinter()
+					.writeValueAsString(obj);
+		} catch (JsonProcessingException e) {
+			return defaultValue;
+		}
+	}
 
 	public static <T> T toObjFromJson(String jsonStr, TypeReference<T> typeReference) {
 		ObjectMapper om = new ObjectMapper();
@@ -124,7 +138,7 @@ public class Ut {
 			return str;
 		}
 	}
-	
+
 	public static int sendMail(String smtpServerId, String smtpServerPw, String from, String fromName, String to,
 			String title, String body) {
 		Properties prop = System.getProperties();
@@ -176,4 +190,4 @@ class MailAuth extends Authenticator {
 	public PasswordAuthentication getPasswordAuthentication() {
 		return pa;
 	}
-} 
+}
