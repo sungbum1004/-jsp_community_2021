@@ -48,8 +48,8 @@ public class UsrMemberController extends Controller {
 		String loginPwConfirm = rq.getParam("loginPwConfirm", "");
 		String name = rq.getParam("name", "");
 		String nickname = rq.getParam("nickname", "");
-		String email = rq.getParam("email", "");
-		String cellphoneNo = rq.getParam("cellphoneNo", "");
+		String email = rq.getParam("cellphoneNo", "");
+		String cellphoneNo = rq.getParam("email", "");
 
 		if (loginId.length() == 0) {
 			rq.historyBack("loginId를 입력해주세요.");
@@ -77,16 +77,16 @@ public class UsrMemberController extends Controller {
 		}
 
 		if (email.length() == 0) {
-			rq.historyBack("email을 입력해주세요.");
-			return;
-		}
-
-		if (cellphoneNo.length() == 0) {
 			rq.historyBack("cellphoneNo를 입력해주세요.");
 			return;
 		}
 
-		ResultData joinRd = memberService.join(loginId, loginPw, loginPwConfirm, name, nickname, email, cellphoneNo);
+		if (cellphoneNo.length() == 0) {
+			rq.historyBack("email을 입력해주세요.");
+			return;
+		}
+
+		ResultData joinRd = memberService.join(loginId, loginPw, loginPwConfirm, name, nickname, cellphoneNo, email);
 
 		if(joinRd.isFail()) {
 			rq.historyBack(joinRd.getMsg());
