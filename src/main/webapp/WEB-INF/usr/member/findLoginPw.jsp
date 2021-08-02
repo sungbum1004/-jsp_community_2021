@@ -25,7 +25,7 @@
 						
 						form.loginId.value = form.loginId.value.trim();
 						if (form.loginId.value.length == 0) {
-							alert('이름을 입력해주세요.');
+							alert('로그인아이디를 입력해주세요.');
 							form.loginId.focus();
 							return;
 						}

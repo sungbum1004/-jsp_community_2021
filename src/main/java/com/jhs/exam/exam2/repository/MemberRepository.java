@@ -48,15 +48,14 @@ public class MemberRepository implements ContainerComponent {
 		return MysqlUtil.selectRow(sql, Member.class);
 	}
 
-	public Member getMemberByLoginIdAndEmail(String loginId, String email) {
+	public void modifyPassword(int id, String loginPw) {
 		SecSql sql = new SecSql();
-		sql.append("SELECT M.*");
-		sql.append("FROM member AS M");
-		sql.append("WHERE M.loginId = ?", loginId);
-		sql.append("AND M.email = ?", email);
-		sql.append("LIMIT 1");
-		
-		return MysqlUtil.selectRow(sql, Member.class);
+		sql.append("UPDATE `member`");
+		sql.append("SET updateDate = NOW()");
+		sql.append(", loginPw = ?", loginPw);
+		sql.append("WHERE id = ?", id);
+
+		MysqlUtil.update(sql);
 	}
 
 }
