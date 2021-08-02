@@ -2,13 +2,14 @@ package com.jhs.exam.exam2.repository;
 
 import java.util.List;
 
+import com.jhs.exam.exam2.container.ContainerComponent;
 import com.jhs.exam.exam2.dto.Article;
 import com.jhs.mysqliutil.MysqlUtil;
 import com.jhs.mysqliutil.SecSql;
 
-public class ArticleRepository {
+public class ArticleRepository implements ContainerComponent {
 	public void init() {
-
+		
 	}
 	
 	public int write(int boardId, int memberId, String title, String body) {
@@ -32,7 +33,7 @@ public class ArticleRepository {
 		sql.append("SELECT A.*");
 		sql.append(", IFNULL(M.nickname, '삭제된회원') AS extra__writerName");
 		sql.append("FROM article AS A");
-		sql.append("LEFT JOIN member AS M");
+		sql.append("LEFT JOIN `member` AS M");
 		sql.append("ON A.memberId = M.id");
 		sql.append("WHERE 1");
 
