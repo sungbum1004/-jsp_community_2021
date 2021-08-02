@@ -1,5 +1,6 @@
 package com.jhs.exam.exam2.util;
 
+import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Date;
@@ -97,15 +98,13 @@ public class Ut {
 			return defaultValue;
 		}
 	}
-	
+
 	public static String toPrettyJson(Object obj, String defaultValue) {
 		ObjectMapper om = new ObjectMapper();
 		om.configure(JsonGenerator.Feature.QUOTE_FIELD_NAMES, false);
-		
+
 		try {
-			return om
-					.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(obj);
+			return om.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
 		} catch (JsonProcessingException e) {
 			return defaultValue;
 		}
@@ -175,6 +174,29 @@ public class Ut {
 		}
 
 		return 1;
+	}
+
+	// 파일내용 읽어오기
+	public static String getFileContents(String filePath) {
+		String rs = null;
+		try {
+			// 바이트 단위로 파일읽기
+			FileInputStream fileStream = null; // 파일 스트림
+
+			fileStream = new FileInputStream(filePath);// 파일 스트림 생성
+			// 버퍼 선언
+			byte[] readBuffer = new byte[fileStream.available()];
+			while (fileStream.read(readBuffer) != -1) {
+			}
+
+			rs = new String(readBuffer);
+
+			fileStream.close(); // 스트림 닫기
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+
+		return rs;
 	}
 }
 
