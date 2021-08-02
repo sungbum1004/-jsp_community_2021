@@ -7,7 +7,6 @@
 
 <section class="section section-member-login flex-grow flex justify-center items-center">
 	<div class="w-full max-w-md card-wrap">
-
 		<div class="card bordered shadow-lg">
 			<div class="card-title">
 				<span>
@@ -23,21 +22,20 @@
 						if (MemberFindLoginPw__submitDone) {
 							return;
 						}
-
+						
+						form.loginId.value = form.loginId.value.trim();
 						if (form.loginId.value.length == 0) {
-							alert('로그인아이디를 입력해주세요.');
+							alert('이름을 입력해주세요.');
 							form.loginId.focus();
-
 							return;
 						}
-
+						
+						form.email.value = form.email.value.trim();
 						if (form.email.value.length == 0) {
 							alert('이메일을 입력해주세요.');
 							form.email.focus();
-
 							return;
 						}
-
 						form.submit();
 						MemberFindLoginPw__submitDone = true;
 					}
@@ -50,7 +48,7 @@
 						</label>
 						<div>
 							<input class="input input-bordered w-full" maxlength="100"
-								name="loginId" type="text" placeholder="로그인아이디를 입력해주세요." />
+								name="loginId" type="text" placeholder="로그인아이디를 입력해주세요." value="${param.loginId}" />
 						</div>
 					</div>
 
@@ -66,7 +64,7 @@
 
 					<div class="btns">
 						<button type="submit" class="btn btn-link">비밀번호 찾기</button>
-						<a href="../member/findLoginId" class="btn btn-link">아이디 찾기</a>
+						<a href="../member/findLoginPw" class="btn btn-link">아이디 찾기</a>
 						<a href="../member/login" class="btn btn-link">로그인</a>
 						<a href="../member/join" class="btn btn-link">가입</a>
 					</div>
@@ -75,4 +73,4 @@
 		</div>
 	</div>
 </section>
-<%@ include file="../part/foot.jspf"%>
+<%@ include file="../part/foot.jspf"%> 

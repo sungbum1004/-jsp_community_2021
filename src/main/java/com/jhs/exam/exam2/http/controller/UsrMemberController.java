@@ -44,38 +44,10 @@ public class UsrMemberController extends Controller {
 		case "findLoginPw":
 			actionShowFindLoginPw(rq);
 			break;
-		case "doFindLoginPw":
-			actionDoFindLoginPw(rq);
-			break;
 		default:
 			rq.println("존재하지 않는 페이지 입니다.");
 			break;
 		}
-	}
-
-	private void actionDoFindLoginPw(Rq rq) {
-		String loginId = rq.getParam("loginId", "");
-		String email = rq.getParam("email", "");
-
-		if (loginId.length() == 0) {
-			rq.historyBack("loginId를 입력해주세요.");
-			return;
-		}
-
-		if (email.length() == 0) {
-			rq.historyBack("email 입력해주세요.");
-			return;
-		}
-
-		Member oldMember = memberService.getMemberByLoginIdAndEmail(loginId, email);
-
-		if (oldMember == null) {
-			rq.historyBack("일치하는 회원이 존재하지 않습니다.");
-			return;
-		}
-
-		rq.historyBack(Ut.f("고객님의 새 임시 패스워드가 %s (으)로 발송되었습니다.", oldMember.getEmail()));
-		return;
 	}
 
 	private void actionShowFindLoginPw(Rq rq) {
