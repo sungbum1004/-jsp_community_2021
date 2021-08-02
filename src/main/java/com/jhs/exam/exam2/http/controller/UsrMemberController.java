@@ -35,6 +35,9 @@ public class UsrMemberController extends Controller {
 		case "loginIdCheck":
 			actionDoLoginIdCheck(rq);
 			break;
+		case "loginNicknameCheck":
+			actionDoLoginNicknameCheck(rq);
+			break;
 		case "findLoginId":
 			actionShowFindLoginId(rq);
 			break;
@@ -53,6 +56,11 @@ public class UsrMemberController extends Controller {
 		}
 	}
 	
+	private void actionDoLoginNicknameCheck(Rq rq) {
+		String nickname = rq.getParam("nickname", "");
+		rq.write(memberService.getMemberByNickname(nickname) + "");
+	}
+
 	private void actionShowFindLoginPw(Rq rq) {
 		rq.jsp("usr/member/findLoginPw");
 

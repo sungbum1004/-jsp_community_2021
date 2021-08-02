@@ -53,12 +53,12 @@ public class MemberService implements ContainerComponent {
 		return memberRepository.getMemberByNameAndEmail(name, email);
 	}
 
-	public Member getMemberByLoginIdAndEmail(String name, String email) {
-		return memberRepository.getMemberByNameAndEmail(name, email);
-	}
-
 	public Member getMemberByLoginId(String loginId) {
 		return memberRepository.getMemberByLoginId(loginId);
+	}
+	
+	public Member getMemberByNickname(String nickname) {
+		return memberRepository.getMemberByNickname(nickname);
 	}
 
 	public boolean isAdmin(Member member) {

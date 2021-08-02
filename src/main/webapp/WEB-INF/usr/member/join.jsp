@@ -98,7 +98,7 @@
 								return false;
 							}
 						});
-						$('#checkbtn').click(function(){
+						$('#checkbtn-1').click(function(){
 							var loginId = $('#loginId').val();
 							$("#join-submit").val(1);
 							$.ajax({
@@ -107,20 +107,61 @@
 								data: {loginId:loginId},
 								success: function(result){
 									if(result != 'null'){
-										$("#checkMsg").html('사용할 수 없는 아이디입니다.');
-										$("#checkMsg").css("color", "red");
+										$("#checkMsg-1").html('사용할 수 없는 아이디입니다.');
+										$("#checkMsg-1").css("color", "red");
 										$("#join-submit").attr("disabled", true);
 									}
 									else{
 										if(loginId.length == 0){
-											$("#checkMsg").html('아이디를 입력해주세요.');
-											$("#checkMsg").css("color", "red");
+											$("#checkMsg-1").html('아이디를 입력해주세요.');
+											$("#checkMsg-1").css("color", "red");
 											$("#join-submit").attr("disabled", true);			
 										}
 										else{
 											console.log(loginId.length)
-											$("#checkMsg").html('사용할 수 있는 아이디입니다.');
-											$("#checkMsg").css("color", "green");
+											$("#checkMsg-1").html('사용할 수 있는 아이디입니다.');
+											$("#checkMsg-1").css("color", "green");
+											$("#join-submit").attr("disabled", false);
+										}
+									}
+								}
+							});
+						});
+					});
+				</script>
+				
+				<script>
+					$(document).ready(function() {
+						$("#join-submit").click(function(){
+							var loginNicknameChecked = $("#join-submit").val();	
+							if(loginNicknameChecked == 0){
+								alert("별명 중복 확인을 해주세요.");
+								return false;
+							}
+						});
+						$('#checkbtn-2').click(function(){
+							var nickname = $('#nickname').val();
+							$("#join-submit").val(1);
+							$.ajax({
+								type: 'POST',
+								url: './loginNicknameCheck',
+								data: {nickname:nickname},
+								success: function(result){
+									if(result != 'null'){
+										$("#checkMsg-2").html('사용할 수 없는 별명입니다.');
+										$("#checkMsg-2").css("color", "red");
+										$("#join-submit").attr("disabled", true);
+									}
+									else{
+										if(nickname.length == 0){
+											$("#checkMsg-2").html('별명을 입력해주세요.');
+											$("#checkMsg-2").css("color", "red");
+											$("#join-submit").attr("disabled", true);			
+										}
+										else{
+											console.log(nickname.length)
+											$("#checkMsg-2").html('사용할 수 있는 별명입니다.');
+											$("#checkMsg-2").css("color", "green");
 											$("#join-submit").attr("disabled", false);
 										}
 									}
@@ -172,9 +213,9 @@
 								<input class="input input-bordered w-full" maxlength="100" id="loginId" name="loginId" type="text"
 									placeholder="로그인아이디를 입력해주세요." />
 							</div>
-							<button type="button" id="checkbtn" class="btn btn-link ml-2">중복확인</button>
+							<button type="button" id="checkbtn-1" class="btn btn-link ml-2">중복확인</button>
 						</div>
-						<div id="checkMsg"></div>
+						<div id="checkMsg-1"></div>
 						
 					</div>
 
@@ -209,9 +250,13 @@
 						<label class="label">
 							<span class="label-text">별명</span>
 						</label>
-						<div>
-							<input class="input input-bordered w-full" maxlength="100" name="nickname" type="text" placeholder="별명을 입력해주세요." />
+						<div class="flex">
+							<div class="flex-grow">
+								<input class="input input-bordered w-full" maxlength="100" id="nickname" name="nickname" type="text" placeholder="별명을 입력해주세요." />
 						</div>
+						<button type="button" id="checkbtn-2" class="btn btn-link ml-2">중복확인</button>
+					</div>
+						<div id="checkMsg-2"></div>
 					</div>
 
 					<div class="form-control">
