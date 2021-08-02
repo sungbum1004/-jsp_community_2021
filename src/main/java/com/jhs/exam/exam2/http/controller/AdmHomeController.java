@@ -1,9 +1,12 @@
 package com.jhs.exam.exam2.http.controller;
-
 import com.jhs.exam.exam2.http.Rq;
 import com.jhs.exam.exam2.util.Ut;
 
 public class AdmHomeController extends Controller {
+	public void init() {
+
+	}
+
 	@Override
 	public void performAction(Rq rq) {
 		switch (rq.getActionMethodName()) {
@@ -15,9 +18,7 @@ public class AdmHomeController extends Controller {
 			break;
 		}
 	}
-
 	private void actionShowMain(Rq rq) {
 		rq.print("관리자 페이지 입니다.");
-		
 	}
 }

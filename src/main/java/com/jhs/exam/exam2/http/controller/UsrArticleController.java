@@ -12,9 +12,14 @@ import com.jhs.exam.exam2.service.BoardService;
 import com.jhs.exam.exam2.util.Ut;
 
 public class UsrArticleController extends Controller {
-	private ArticleService articleService = Container.articleService;
-	private BoardService boardService = Container.boardService;
-	
+	private ArticleService articleService;
+	private BoardService boardService;
+
+	public void init() {
+		articleService = Container.articleService;
+		boardService = Container.boardService;
+	}
+
 	@Override
 	public void performAction(Rq rq) {
 		switch (rq.getActionMethodName()) {
@@ -95,20 +100,21 @@ public class UsrArticleController extends Controller {
 	private void actionShowList(Rq rq) {
 		String searchKeywordTypeCode = rq.getParam("searchKeywordTypeCode", "title,body");
 		String searchKeyword = rq.getParam("searchKeyword", "");
-		
-		int itemsCountInAPage = 10; 
+
+		int itemsCountInAPage = 10;
 		int page = rq.getIntParam("page", 1);
 		int boardId = rq.getIntParam("boardId", 0);
-		
-		int totalItemsCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
-		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMember(), boardId, searchKeywordTypeCode, searchKeyword, itemsCountInAPage, page);
 
-		int totalPage = (int)Math.ceil((double)totalItemsCount / itemsCountInAPage);
-		
+		int totalItemsCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
+		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMember(), boardId,
+				searchKeywordTypeCode, searchKeyword, itemsCountInAPage, page);
+
+		int totalPage = (int) Math.ceil((double) totalItemsCount / itemsCountInAPage);
+
 		Board board = boardService.getBoardById(boardId);
-		
+
 		rq.setAttr("board", board);
-		
+
 		rq.setAttr("searchKeywordTypeCode", searchKeywordTypeCode);
 		rq.setAttr("page", page);
 		rq.setAttr("boardId", boardId);
@@ -129,7 +135,7 @@ public class UsrArticleController extends Controller {
 			rq.historyBack("boardId를 입력해주세요.");
 			return;
 		}
-		
+
 		if (title.length() == 0) {
 			rq.historyBack("title을 입력해주세요.");
 			return;

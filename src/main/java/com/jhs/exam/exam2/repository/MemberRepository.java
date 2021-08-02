@@ -5,6 +5,9 @@ import com.jhs.mysqliutil.MysqlUtil;
 import com.jhs.mysqliutil.SecSql;
 
 public class MemberRepository {
+	public void init() {
+
+	}
 
 	public Member getMemberByLoginId(String loginId) {
 		SecSql sql = new SecSql();

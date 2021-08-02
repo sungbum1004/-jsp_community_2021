@@ -8,7 +8,11 @@ import com.jhs.exam.exam2.service.MemberService;
 import com.jhs.exam.exam2.util.Ut;
 
 public class UsrMemberController extends Controller {
-	private MemberService memberService = Container.memberService;
+	private MemberService memberService;
+
+	public void init() {
+		memberService = Container.memberService;
+	}
 
 	@Override
 	public void performAction(Rq rq) {
@@ -48,7 +52,7 @@ public class UsrMemberController extends Controller {
 			break;
 		}
 	}
-	
+
 	private void actionDoFindLoginPw(Rq rq) {
 		String loginId = rq.getParam("loginId", "");
 		String email = rq.getParam("email", "");
@@ -64,19 +68,19 @@ public class UsrMemberController extends Controller {
 		}
 
 		Member oldMember = memberService.getMemberByLoginIdAndEmail(loginId, email);
-		
-		if ( oldMember == null ) {
+
+		if (oldMember == null) {
 			rq.historyBack("일치하는 회원이 존재하지 않습니다.");
 			return;
 		}
-		
-		rq.historyBack(Ut.f("고객님의 새 임시 패스워드가 %s (으)로 발송되었습니다.",  oldMember.getEmail()));
+
+		rq.historyBack(Ut.f("고객님의 새 임시 패스워드가 %s (으)로 발송되었습니다.", oldMember.getEmail()));
 		return;
 	}
 
 	private void actionShowFindLoginPw(Rq rq) {
 		rq.jsp("usr/member/findLoginPw");
-		
+
 	}
 
 	private void actionShowFindLoginId(Rq rq) {
@@ -99,11 +103,11 @@ public class UsrMemberController extends Controller {
 
 		Member oldMember = memberService.getMemberByNameAndEmail(name, email);
 
-		if ( oldMember == null ) {
+		if (oldMember == null) {
 			rq.historyBack("일치하는 회원이 존재하지 않습니다.");
 			return;
 		}
-		
+
 		String replaceUri = "../member/login?loginId=" + oldMember.getLoginId();
 		rq.replace(Ut.f("해당 회원의 로그인아이디는 `%s` 입니다.", oldMember.getLoginId()), replaceUri);
 		return;
@@ -132,7 +136,7 @@ public class UsrMemberController extends Controller {
 			rq.historyBack("loginPw를 입력해주세요.");
 			return;
 		}
-		
+
 		if (loginPwConfirm.length() == 0) {
 			rq.historyBack("loginPwConfirm를 입력해주세요.");
 			return;
@@ -160,7 +164,7 @@ public class UsrMemberController extends Controller {
 
 		ResultData joinRd = memberService.join(loginId, loginPw, loginPwConfirm, name, nickname, cellphoneNo, email);
 
-		if(joinRd.isFail()) {
+		if (joinRd.isFail()) {
 			rq.historyBack(joinRd.getMsg());
 			return;
 		}

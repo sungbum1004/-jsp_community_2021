@@ -20,6 +20,7 @@ public class Container {
 	public static BeforeActionInterceptor beforeActionInterceptor;
 	public static NeedLoginInterceptor needLoginInterceptor;
 	public static NeedLogoutInterceptor needLogoutInterceptor;
+	public static NeedAdminInterceptor needAdminInterceptor;
 
 	public static ArticleRepository articleRepository;
 	public static ArticleService articleService;
@@ -33,15 +34,14 @@ public class Container {
 
 	public static BoardRepository boardRepository;
 	public static BoardService boardService;
-	
-	public static Controller admHomeController;
-	public static NeedAdminInterceptor needAdminInterceptor;
+
+	public static AdmHomeController admHomeController;
 
 	public static void init() {
 		memberRepository = new MemberRepository();
 		boardRepository = new BoardRepository();
 		articleRepository = new ArticleRepository();
-		
+
 		memberService = new MemberService();
 		boardService = new BoardService();
 		articleService = new ArticleService();
@@ -54,7 +54,26 @@ public class Container {
 		usrMemberController = new UsrMemberController();
 		usrArticleController = new UsrArticleController();
 		usrHomeController = new UsrHomeController();
-		
+
 		admHomeController = new AdmHomeController();
+
+		// 객체 초기화
+		memberRepository.init();
+		boardRepository.init();
+		articleRepository.init();
+
+		memberService.init();
+		boardService.init();
+		articleService.init();
+
+		beforeActionInterceptor.init();
+		needLoginInterceptor.init();
+		needLogoutInterceptor.init();
+		needAdminInterceptor.init();
+
+		usrMemberController.init();
+		usrArticleController.init();
+		usrHomeController.init();
+		admHomeController.init();
 	}
 }
