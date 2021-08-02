@@ -6,6 +6,7 @@ import com.jhs.exam.exam2.http.controller.UsrArticleController;
 import com.jhs.exam.exam2.http.controller.UsrHomeController;
 import com.jhs.exam.exam2.http.controller.UsrMemberController;
 import com.jhs.exam.exam2.interceptor.BeforeActionInterceptor;
+import com.jhs.exam.exam2.interceptor.NeedAdminInterceptor;
 import com.jhs.exam.exam2.interceptor.NeedLoginInterceptor;
 import com.jhs.exam.exam2.interceptor.NeedLogoutInterceptor;
 import com.jhs.exam.exam2.repository.ArticleRepository;
@@ -34,6 +35,7 @@ public class Container {
 	public static BoardService boardService;
 	
 	public static Controller admHomeController;
+	public static NeedAdminInterceptor needAdminInterceptor;
 
 	public static void init() {
 		memberRepository = new MemberRepository();
@@ -47,6 +49,7 @@ public class Container {
 		beforeActionInterceptor = new BeforeActionInterceptor();
 		needLoginInterceptor = new NeedLoginInterceptor();
 		needLogoutInterceptor = new NeedLogoutInterceptor();
+		needAdminInterceptor = new NeedAdminInterceptor();
 
 		usrMemberController = new UsrMemberController();
 		usrArticleController = new UsrArticleController();
