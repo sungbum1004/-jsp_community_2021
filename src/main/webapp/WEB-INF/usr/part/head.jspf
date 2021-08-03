@@ -53,8 +53,7 @@ const rqParams = ${rq.paramMapJsonStr};
 
 					<script>
 						if (rqParams.boardId) {
-							$('.search-bar form select[name="boardId"]').val(
-									rqParams.boardId);
+							$('.search-bar form select[name="boardId"]').val(rqParams.boardId);
 						}
 					</script>
 				</div>

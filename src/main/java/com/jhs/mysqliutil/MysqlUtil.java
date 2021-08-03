@@ -36,6 +36,7 @@ public class MysqlUtil {
 		return isDevMode;
 	}
 
+	// DB 접속 정보 셋팅
 	public static void setDBInfo(String dbHost, String dbLoginId, String dbLoginPw, String dbName) {
 		MysqlUtil.dbHost = dbHost;
 		MysqlUtil.dbLoginId = dbLoginId;

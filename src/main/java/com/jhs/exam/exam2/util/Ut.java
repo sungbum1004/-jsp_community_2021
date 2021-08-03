@@ -54,6 +54,7 @@ public class Ut {
 		return false;
 	}
 
+	// 포멧을 간략하게 Ut.f로 사용할 수 있게 해준다.
 	public static String f(String format, Object... args) {
 		return String.format(format, args);
 	}
@@ -88,6 +89,7 @@ public class Ut {
 		return map;
 	}
 
+	// 객체를 json화 시킨다.
 	public static String toJson(Object obj, String defaultValue) {
 		ObjectMapper om = new ObjectMapper();
 
@@ -98,6 +100,7 @@ public class Ut {
 		}
 	}
 
+	// json을 이쁘게 보이게끔 한다.
 	public static String toPrettyJson(Object obj, String defaultValue) {
 		ObjectMapper om = new ObjectMapper();
 		om.configure(JsonGenerator.Feature.QUOTE_FIELD_NAMES, false);
