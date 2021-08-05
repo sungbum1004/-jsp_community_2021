@@ -83,6 +83,8 @@ public class Rq {
 			return;
 		}
 
+		// Index의 의미 
+		// 0 / 1:jsp_community_2021 / 2:usr / 3:article / 4:write의 의미다.
 		int controllerTypeNameIndex = 2;
 		int controllerNameIndex = 3;
 		int actionMethodNameIndex = 4;
@@ -123,15 +125,19 @@ public class Rq {
 		return paramValue;
 	}
 
+	// paramName으로 키를 받아서 String 하고 
 	public int getIntParam(String paramName, int defaultValue) {
 		String paramValue = req.getParameter(paramName);
 
+		// 없다면 defaultValue
 		if (paramValue == null) {
 			return defaultValue;
 		}
 
+		// 그것을 정수화 하는데 
 		try {
 			return Integer.parseInt(paramValue);
+		// 실패해도 defaultValue
 		} catch (NumberFormatException e) {
 			return defaultValue;
 		}

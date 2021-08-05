@@ -54,7 +54,7 @@ public class Ut {
 		return false;
 	}
 
-	// 포멧을 간략하게 Ut.f로 사용할 수 있게 해준다.
+	// 포맷을 간략하게 Ut.f로 사용할 수 있게 해준다.
 	public static String f(String format, Object... args) {
 		return String.format(format, args);
 	}
