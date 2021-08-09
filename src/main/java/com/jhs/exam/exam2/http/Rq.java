@@ -106,6 +106,7 @@ public class Rq {
 		print(str + "\n");
 	}
 
+	// 해당 파일 위치를 변수에다가 이동시켜주는 메서드
 	public void jsp(String jspPath) {
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/" + jspPath + ".jsp");
 		try {
@@ -125,19 +126,19 @@ public class Rq {
 		return paramValue;
 	}
 
-	// paramName으로 키를 받아서 String 하고 
+	// 사용자가 입력한 값(정수만 가능)을 읽어오는 메서드
 	public int getIntParam(String paramName, int defaultValue) {
+		// paramName 값을 읽어와 paramVlaue에 저장
 		String paramValue = req.getParameter(paramName);
 
-		// 없다면 defaultValue
+		// paramValue 값이 null일 경우 defaultValue값을 리턴
 		if (paramValue == null) {
 			return defaultValue;
 		}
 
-		// 그것을 정수화 하는데 
+		// paramValue값이 있을 경우 정수화 하여 리턴
 		try {
 			return Integer.parseInt(paramValue);
-		// 실패해도 defaultValue
 		} catch (NumberFormatException e) {
 			return defaultValue;
 		}
@@ -147,6 +148,7 @@ public class Rq {
 		print(Ut.f(format, args));
 	}
 
+	// 입력한 변수 msg를 출력하고 페이지 뒤로가기 메서드
 	public void historyBack(String msg) {
 		println("<script>");
 		if (msg != null && msg.trim().length() > 0) {
