@@ -13,6 +13,7 @@ public class ArticleRepository implements ContainerComponent {
 	}
 	
 	public int write(int boardId, int memberId, String title, String body) {
+		// 게시물을 해당 변수에 맞게 DB에 저장 후 해당 게시물 번호 리턴
 		SecSql sql = new SecSql();
 		sql.append("INSERT INTO article");
 		sql.append("SET regDate = NOW()");
@@ -76,6 +77,7 @@ public class ArticleRepository implements ContainerComponent {
 	}
 
 	public int delete(int id) {
+		// 해당 id의 게시물을 DB에서 삭제
 		SecSql sql = new SecSql();
 		sql.append("DELETE FROM article");
 		sql.append("WHERE id = ?", id);
