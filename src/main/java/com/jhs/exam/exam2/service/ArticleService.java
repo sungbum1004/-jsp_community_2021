@@ -17,6 +17,7 @@ public class ArticleService implements ContainerComponent {
 		articleRepository = Container.articleRepository;
 	}
 
+	// 재구현 완료 21-08-12
 	public ResultData write(int boardId, int memberId, String title, String body) {
 		// 받아온 변수를 이용해 게시물 작성하는 함수
 		int id = articleRepository.write(boardId, memberId, title, body);

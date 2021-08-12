@@ -154,6 +154,7 @@ public class UsrArticleController extends Controller {
 		rq.jsp("usr/article/list");
 	}
 
+	// 재구현 완료 21-08-12
 	// 게시물작성 jsp에서 연결(작성된 내용을 DB에 저장하는 함수)
 	private void actionDoWrite(Rq rq) {
 		// 게시물작성 jsp에서 넘어온 값을 변수에 저장
