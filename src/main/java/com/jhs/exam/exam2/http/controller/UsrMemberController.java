@@ -230,6 +230,7 @@ public class UsrMemberController extends Controller {
 		rq.replace("로그아웃 되었습니다.", "../../");
 	}
 
+	// 재구현 완료 21-08-15
 	// 로그인 가능 여부를 판별하는 메서드(로그인 페이지에서 연결)
 	private void actionDoLogin(Rq rq) {
 		// 로그인 페이지에서 받아온 파라미터를 해당 변수에 저장

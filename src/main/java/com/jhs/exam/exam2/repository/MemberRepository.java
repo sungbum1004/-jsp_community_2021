@@ -10,6 +10,7 @@ public class MemberRepository implements ContainerComponent {
 
 	}
 
+	// 재구현 완료 21-08-15
 	public Member getMemberByLoginId(String loginId) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT M.*");

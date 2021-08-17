@@ -17,6 +17,7 @@ public class MemberService implements ContainerComponent {
 		emailService = Container.emailService;
 	}
 
+	// 재구현 완료 21-08-15
 	public ResultData login(String loginId, String loginPw) {
 		// 로그인아이디로 member가 존재하는지 확인하는 함수
 		Member member = getMemberByLoginId(loginId);
@@ -62,6 +63,7 @@ public class MemberService implements ContainerComponent {
 		return memberRepository.getMemberByNameAndEmail(name, email);
 	}
 
+	// 재구현 완료 21-08-15
 	public Member getMemberByLoginId(String loginId) {
 		return memberRepository.getMemberByLoginId(loginId);
 	}
