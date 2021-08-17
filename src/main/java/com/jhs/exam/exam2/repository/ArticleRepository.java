@@ -88,6 +88,7 @@ public class ArticleRepository implements ContainerComponent {
 		return MysqlUtil.delete(sql);
 	}
 
+	// 재구현 완료 21-08-14
 	public int modify(int id, String title, String body) {
 		SecSql sql = new SecSql();
 		sql.append("UPDATE article");

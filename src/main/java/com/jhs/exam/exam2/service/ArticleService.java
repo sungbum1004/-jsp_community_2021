@@ -95,6 +95,7 @@ public class ArticleService implements ContainerComponent {
 		return ResultData.from("S-1", Ut.f("%d번 게시물이 수정되었습니다.", id), "id", id);
 	}
 
+	// 재구현 완료 21-08-14
 	public ResultData actorCanModify(Member member, Article article) {
 		//접속한 멤버의 id와 게시물에 저장된 작성자(memberId)를 저장
 		int memberId = member.getId();

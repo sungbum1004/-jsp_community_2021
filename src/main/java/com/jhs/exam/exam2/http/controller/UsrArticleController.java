@@ -201,6 +201,7 @@ public class UsrArticleController extends Controller {
 		rq.jsp("usr/article/write");
 	}
 
+	// 재구현 완료 21-08-14
 	// 게시물 수정 페이지에서 연결(변경될 게시물 내용을 DB에 저장하는 함수)
 	private void actionDoModify(Rq rq) {
 		int id = rq.getIntParam("id", 0);
@@ -249,6 +250,7 @@ public class UsrArticleController extends Controller {
 		rq.replace(modifyRd.getMsg(), redirectUri);
 	}
 
+	// 재구현 완료 21-08-14
 	// 수정 할 게시물이 존재하는지 확인하는 함수
 	private void actionShowModify(Rq rq) {
 		// 수정 할 게시물 id를 받아옴 없을시 0저장
