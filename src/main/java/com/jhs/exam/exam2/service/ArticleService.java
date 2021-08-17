@@ -80,6 +80,7 @@ public class ArticleService implements ContainerComponent {
 		article.setExtra__actorCanDelete(actorCanDelete);
 	}
 
+	// 재구현 완료 21-08-14
 	public ResultData delete(int id) {
 		// 해당 아이디의 게시물 삭제하는 함수
 		articleRepository.delete(id);
@@ -115,6 +116,7 @@ public class ArticleService implements ContainerComponent {
 		return ResultData.from("S-1", "수정 가능합니다.");
 	}
 
+	// 재구현 완료 21-08-14
 	public ResultData actorCanDelete(Member member, Article article) {
 		// 접속한 member의 id와 게시물 작성자(memberId)를 변수에 저장
 		int memberId = member.getId();

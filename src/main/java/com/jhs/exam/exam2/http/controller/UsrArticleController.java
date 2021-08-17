@@ -53,6 +53,7 @@ public class UsrArticleController extends Controller {
 		}
 	}
 
+	// 재구현 완료 21-08-14
 	// 페이지에서 게시물을 삭제 하는 메서드
 	private void actionDoDelete(Rq rq) {
 		//해당 게시물의 id값을 rq.getIntParam()를 사용하여 불러온다.

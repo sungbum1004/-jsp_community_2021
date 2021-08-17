@@ -79,6 +79,7 @@ public class ArticleRepository implements ContainerComponent {
 		return MysqlUtil.selectRow(sql, Article.class);
 	}
 
+	// 재구현 완료 21-08-14
 	public int delete(int id) {
 		// 해당 id의 게시물을 DB에서 삭제
 		SecSql sql = new SecSql();
