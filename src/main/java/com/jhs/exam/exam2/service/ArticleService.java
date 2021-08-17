@@ -27,6 +27,7 @@ public class ArticleService implements ContainerComponent {
 		return ResultData.from("S-1", Ut.f("%d번 게시물이 생성되었습니다.", id), "id", id);
 	}
 
+	// 재구현 완료 21-08-12
 	// 해당 변수를 받아 요구에 맞는 게시물 리스트를 리턴하는 메서드
 	public List<Article> getForPrintArticles(Member actor, int boardId, String searchKeywordTypeCode,
 			String searchKeyword, int itemsCountInAPage, int page) {
@@ -131,6 +132,7 @@ public class ArticleService implements ContainerComponent {
 		return ResultData.from("S-1", "삭제 가능합니다.");
 	}
 
+	// 재구현 완료 21-08-12
 	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword) {
 		return articleRepository.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 	}

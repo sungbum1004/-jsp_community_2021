@@ -29,6 +29,7 @@ public class ArticleRepository implements ContainerComponent {
 		return id;
 	}
 
+	// 재구현 완료 21-08-12
 	public List<Article> getForPrintArticles(int boardId, String searchKeywordTypeCode, String searchKeyword,
 			int limitFrom, int limitTake) {
 		SecSql sql = new SecSql();
@@ -104,6 +105,7 @@ public class ArticleRepository implements ContainerComponent {
 		return MysqlUtil.update(sql);
 	}
 
+	// 재구현 완료 21-08-12
 	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT COUNT(*) AS cnt");

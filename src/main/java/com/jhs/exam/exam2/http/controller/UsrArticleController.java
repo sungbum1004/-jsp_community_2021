@@ -117,6 +117,7 @@ public class UsrArticleController extends Controller {
 		rq.jsp("usr/article/detail");
 	}
 
+	// 재구현 완료 21-08-13
 	private void actionShowList(Rq rq) {
 		// 검색 타입 받아오기. 없을시 title,body 세팅
 		String searchKeywordTypeCode = rq.getParam("searchKeywordTypeCode", "title,body");
@@ -193,6 +194,7 @@ public class UsrArticleController extends Controller {
 		rq.replace(writeRd.getMsg(), redirectUri);
 	}
 
+	// 재구현 완료 21-08-12
 	// 해당 페이지로 이동하는 함수
 	private void actionShowWrite(Rq rq) {
 		rq.jsp("usr/article/write");
