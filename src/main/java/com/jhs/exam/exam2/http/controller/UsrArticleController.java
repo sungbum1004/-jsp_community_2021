@@ -92,6 +92,7 @@ public class UsrArticleController extends Controller {
 		rq.replace(Ut.f("%d번 게시물을 삭제하였습니다.", id), redirectUri);
 	}
 
+	// 재구현 완료 21-08-13
 	private void actionShowDetail(Rq rq) {
 		// 해당 게시물의 id값을 rq.getIntParam()를 사용하여 불러온다.
 		int id = rq.getIntParam("id", 0);

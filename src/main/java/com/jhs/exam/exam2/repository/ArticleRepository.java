@@ -69,6 +69,7 @@ public class ArticleRepository implements ContainerComponent {
 		return MysqlUtil.selectRows(sql, Article.class);
 	}
 
+	// 재구현 완료 21-08-13
 	public Article getForPrintArticleById(int id) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT A.*");

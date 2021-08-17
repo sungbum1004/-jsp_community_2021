@@ -46,6 +46,7 @@ public class ArticleService implements ContainerComponent {
 		return articles;
 	}
 
+	// 재구현 완료 21-08-13
 	public Article getForPrintArticleById(Member actor, int id) {
 		// 해당 게시물 id로 해당 게시물 불러오기
 		Article article = articleRepository.getForPrintArticleById(id);
