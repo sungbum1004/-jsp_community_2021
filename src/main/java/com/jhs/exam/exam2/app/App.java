@@ -27,6 +27,7 @@ public class App implements ContainerComponent {
 		return true;
 	}
 
+	// 서버 배포 여부를 리턴해주는 함수
 	private static boolean isProductMode() {
 		return isDevMode() == false;
 	}
@@ -42,18 +43,22 @@ public class App implements ContainerComponent {
 
 	}
 
+	// 발송 할 메일 주소를 리턴하는 함수
 	public String getSmtpGmailId() {
 		return "tlsqkfka74@gmail.com";
 	}
 
+	// 발송 할 메일 비밀번호(파일) 리턴하는 함수
 	public String getSmtpGmailPw() {
 		return smtpGmailPw;
 	}
 
+	// 커뮤니티 이름을 리턴하는 함수
 	public String getSiteName() {
 		return "레몬 커뮤니티";
 	}
 
+	// 베이스 Uri를 리턴하는 함수
 	public String getBaseUri() {
 		String appUri = getSiteProtocol() + "://" + getSiteDomain();
 
@@ -68,6 +73,7 @@ public class App implements ContainerComponent {
 		return appUri;
 	}
 
+	// 커뮤니티 이름을 리턴하는 함수
 	private String getContextName() {
 		if (isProductMode()) {
 			return "";
@@ -76,22 +82,27 @@ public class App implements ContainerComponent {
 		return "2021_jsp_board";
 	}
 
+	// 사이트 포트번호를 리턴하는 함수
 	private int getSitePort() {
 		return 8081;
 	}
 
+	// 사이트 ㄷ메인을 리턴하는 함수
 	private String getSiteDomain() {
 		return "localhost";
 	}
 
+	// 사이트의 프로토콜을 리턴하는 함수
 	private String getSiteProtocol() {
 		return "http";
 	}
 
+	// 베이스 Uri에 로그인페이지를 더해 리턴 하는 함수
 	public String getLoginUri() {
 		return getBaseUri() + "/usr/member/login";
 	}
 
+	// 메일 작성시 작성자 이름을 리턴하는 함수
 	public String getNotifyEmailFromName() {
 		return "레몬 커뮤니티 알림봇";
 	}

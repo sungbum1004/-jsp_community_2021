@@ -93,7 +93,7 @@ abstract public class DispatcherServlet extends HttpServlet {
 			return false;
 		}
 
-		// 이동하는고시 로그아웃 유무 걸러주는 인터셉터(로그인 후 이동시 로그인 되어있으면 false리턴)
+		// 이동하는곳이 로그아웃 유무 걸러주는 인터셉터(로그인 후 이동시 로그인 되어있으면 false리턴)
 		if (Container.needLogoutInterceptor.runBeforeAction(rq) == false) {
 			return false;
 		}
