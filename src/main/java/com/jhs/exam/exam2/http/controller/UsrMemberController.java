@@ -223,6 +223,7 @@ public class UsrMemberController extends Controller {
 		rq.replace(joinRd.getMsg(), redirectUri);
 	}
 
+	// 재구현 완료 21-08-16
 	// 로그아웃 메서드
 	private void actionDoLogout(Rq rq) {
 		// 로그인된 json 형식의 로그인멤버를 삭제
