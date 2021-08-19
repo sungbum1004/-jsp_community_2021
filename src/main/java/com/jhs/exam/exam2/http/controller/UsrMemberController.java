@@ -60,6 +60,7 @@ public class UsrMemberController extends Controller {
 		}
 	}
 	
+	// 재구현 완료 21-08-17
 	// 로그인시 닉네임 중복 확인을 위한 메서드
 	private void actionDoLoginNicknameCheck(Rq rq) {
 		String nickname = rq.getParam("nickname", "");
@@ -72,6 +73,7 @@ public class UsrMemberController extends Controller {
 
 	}
 	
+	// 재구현 완료 21-08-17
 	// 비밀번호 찾기 메서드(비밀번호 찾기 페이지에서 이동)
 	private void actionDoFindLoginPw(Rq rq) {
 		// 입력한 loginId와 email을 받아 변수에 저장
@@ -117,11 +119,13 @@ public class UsrMemberController extends Controller {
 		rq.replace(sendTempLoginPwToEmailRd.getMsg(), "../home/main");
 	}
 
+	// 재구현 완료 21-08-17
 	// 비밀번호 찾기 페이지로 이동
 	private void actionShowFindLoginId(Rq rq) {
 		rq.jsp("usr/member/findLoginId");
 	}
  
+	// 재구현 완료 21-08-17
 	// 로그인아이디 찾기 함수(로그인아이디 찾기 페이지에서 이동)
 	private void actionDoFindLoginId(Rq rq) {
 		// 로그인 아이디 찾기 페이지에서 받은 파라미터 값을 변수에 저장
@@ -155,6 +159,7 @@ public class UsrMemberController extends Controller {
 		return;
 	}
 
+	// 재구현 완료 21-08-17
 	// 로그인아이디 중복확인을 위한 메서드
 	private void actionDoLoginIdCheck(Rq rq) {
 		String loginId = rq.getParam("loginId", "");

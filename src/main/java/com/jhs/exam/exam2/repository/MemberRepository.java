@@ -51,6 +51,7 @@ public class MemberRepository implements ContainerComponent {
 		return MysqlUtil.selectRow(sql, Member.class);
 	}
 
+	// 재구현 완료 21-08-17
 	public void modifyPassword(int id, String loginPw) {
 		SecSql sql = new SecSql();
 		sql.append("UPDATE `member`");
@@ -61,6 +62,7 @@ public class MemberRepository implements ContainerComponent {
 		MysqlUtil.update(sql);
 	}
 
+	// 재구현 완료 21-08-17
 	public Member getMemberByNickname(String nickname) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT M.*");

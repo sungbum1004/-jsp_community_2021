@@ -70,6 +70,7 @@ public class MemberService implements ContainerComponent {
 		return memberRepository.getMemberByLoginId(loginId);
 	}
 	
+	// 재구현 완료 21-08-17
 	public Member getMemberByNickname(String nickname) {
 		return memberRepository.getMemberByNickname(nickname);
 	}
@@ -78,6 +79,7 @@ public class MemberService implements ContainerComponent {
 		return member.getAuthLevel() >= 7;
 	}
 
+	// 재구현 완료 21-08-17
 	public ResultData sendTempLoginPwToEmail(Member actor) {
 		App app = Container.app;
 		// 메일 제목과 내용 만들기
@@ -109,6 +111,7 @@ public class MemberService implements ContainerComponent {
 		return ResultData.from("S-1", resultMsg, "email", actor.getEmail());
 	}
 
+	// 재구현 완료 21-08-17
 	private void setTempLoginPw(Member actor, String tempLoginPw) {
 		// DB에 접근하여 해당 멤버 비밀번호 변경하는 함수
 		memberRepository.modifyPassword(actor.getId(), tempLoginPw);
