@@ -161,6 +161,7 @@ public class UsrMemberController extends Controller {
 		rq.write(memberService.getMemberByLoginId(loginId) + "");
 	}
 
+	// 재구현 완료 21-08-16
 	// 회원가입 함수(회원가입 페이지에서 연결)
 	private void actionDoJoin(Rq rq) {
 		// 회원가입 페이지에서 받아온 파라미터를 변수에 저장

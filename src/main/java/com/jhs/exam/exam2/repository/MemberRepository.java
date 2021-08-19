@@ -20,6 +20,7 @@ public class MemberRepository implements ContainerComponent {
 		return MysqlUtil.selectRow(sql, Member.class);
 	}
 
+	// 재구현 완료 21-08-16
 	public int join(String loginId, String loginPw, String loginPwConfirm, String name, String nickname, String email, String cellphoneNo) {
 		SecSql sql = new SecSql();
 		sql.append("INSERT INTO `member`");
@@ -38,6 +39,7 @@ public class MemberRepository implements ContainerComponent {
 		return id;
 	}
 
+	// 재구현 완료 21-08-16
 	public Member getMemberByNameAndEmail(String name, String email) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT M.*");

@@ -36,6 +36,7 @@ public class MemberService implements ContainerComponent {
 		return ResultData.from("S-1", "환영합니다.", "member", member);
 	}
 
+	// 재구현 완료 21-08-16
 	public ResultData join(String loginId, String loginPw, String loginPwConfirm, String name, String nickname,
 			String email, String cellphoneNo) {
 		// 가입 할 로그인아이디를 받아 member 추적 
@@ -59,6 +60,7 @@ public class MemberService implements ContainerComponent {
 		return ResultData.from("S-1", "환영합니다.");
 	}
 
+	// 재구현 완료 21-08-16
 	public Member getMemberByNameAndEmail(String name, String email) {
 		return memberRepository.getMemberByNameAndEmail(name, email);
 	}
