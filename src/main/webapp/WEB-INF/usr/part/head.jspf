@@ -94,9 +94,9 @@ const rqParams = ${rq.paramMapJsonStr};
 			<div class="h-full flex">
 				<a href="../../" class="logo flex items-center pl-4 hover:underline hover:text-red-500">
 					<span>
-						<i class="far fa-lemon"></i>
+						<i class="fas fa-seedling"></i>
 					</span>
-					<span class="flex"> &nbsp;Lemon </span>
+					<span class="flex"> &nbsp;JSB </span>
 				</a>
 
 				<div class="flex-grow"></div>
@@ -143,9 +143,9 @@ const rqParams = ${rq.paramMapJsonStr};
 			<div class="h-full container mx-auto flex">
 				<a href="../../" class="logo flex items-center px-4 hover:underline hover:text-red-500">
 					<span>
-						<i class="far fa-lemon"></i>
+						<i class="fas fa-seedling"></i>
 					</span>
-					<span class="flex"> &nbsp;Lemon </span>
+					<span class="flex"> &nbsp;JSB </span>
 				</a>
 
 				<div class="flex-grow"></div>
