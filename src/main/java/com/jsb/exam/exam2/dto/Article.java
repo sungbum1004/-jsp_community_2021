@@ -27,6 +27,10 @@ public class Article {
 		return body;
 	}
 	
+	public String getBodySummaryForPrintNlToBr() {
+		return body.replaceAll("\n", "<br>");
+	}
+	
 	public String getWriterProfileImgUri() {
 		return "https://i.pravatar.cc/200?img=" + (memberId % 1000 + 1);
 	}
