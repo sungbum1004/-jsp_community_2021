@@ -26,4 +26,8 @@ public class Article {
 	public String getBodySummaryForPrint() {
 		return body;
 	}
+	
+	public String getWriterProfileImgUri() {
+		return "https://i.pravatar.cc/200?img=" + (memberId % 1000 + 1);
+	}
 }
