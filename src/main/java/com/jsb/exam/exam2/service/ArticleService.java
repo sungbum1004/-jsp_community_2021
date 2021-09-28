@@ -12,9 +12,11 @@ import com.jsb.exam.exam2.util.Ut;
 
 public class ArticleService implements ContainerComponent {
 	private ArticleRepository articleRepository;
+	private MemberService memberService;
 
 	public void init() {
 		articleRepository = Container.articleRepository;
+		memberService = Container.memberService;
 	}
 
 	// 재구현 완료 21-08-12
@@ -102,11 +104,6 @@ public class ArticleService implements ContainerComponent {
 		int memberId = member.getId();
 		int writerMemberId = article.getMemberId();
 		
-		// 접속하 멤버가 관리자이면 S-0 저장후 리턴
-		if(member.getAuthLevel() == 7) {
-			return ResultData.from("S-0", "관리자 권한으로 수정 합니다.");
-		}
-		
 		// memberId와 writerMemberId가 다를시 F-1저장 후 리턴
 		if(memberId != writerMemberId) {
 			return ResultData.from("F-1", "권한이 없습니다.");
@@ -121,12 +118,10 @@ public class ArticleService implements ContainerComponent {
 		// 접속한 member의 id와 게시물 작성자(memberId)를 변수에 저장
 		int memberId = member.getId();
 		int writerMemberId = article.getMemberId();
-	
-		// 접속하 멤버가 관리자이면 S-0 저장 후 리턴
-		if(member.getAuthLevel() == 7) {
-			return ResultData.from("S-0", "관리자 권한으로 삭제 합니다.");
-		}
 		
+		if (memberService.isAdmin(member)) {
+			return ResultData.from("S-2", "관리자 권한으로 삭제 합니다.");
+		}
 		// memberId와 writerMemberId가 다를시 F-1저장 후 리턴
 		if(memberId != writerMemberId) {
 			return ResultData.from("F-1", "권한이 없습니다.");
